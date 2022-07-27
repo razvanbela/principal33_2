@@ -1,6 +1,6 @@
 const date = new Date();
 
-const calendar = () => {
+const readCalendar = () => {
     date.setDate(1);
     const monthDays = document.querySelector('.days');
     const lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate();
@@ -30,13 +30,13 @@ const calendar = () => {
 
 document.querySelector(".prev").addEventListener('click', () => {
     date.setMonth(date.getMonth() - 1);
-    calendar();
+    readCalendar();
 });
 document.querySelector(".next").addEventListener('click', () => {
     date.setMonth(date.getMonth() + 1);
-    calendar();
+    readCalendar();
 });
-calendar();
+readCalendar();
 /*
 document.querySelectorAll('.days').forEach(item => {
     item.addEventListener('click', event => {
