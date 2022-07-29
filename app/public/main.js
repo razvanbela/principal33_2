@@ -17,14 +17,14 @@ const readCalendar = () => {
     }
     for (let j = 1; j <= lastDay; j++) {
         if (j == new Date().getDate() && date.getMonth() === new Date().getMonth() && date.getFullYear() === new Date().getFullYear()) {
-            days += '<div class="today">${j}</div>>';
+            days += '<div class="today">${j}</div>';
         } else {
             days += '<div class="days">${j}</div>';
         }
     }
     for (let k = 1; k <= nextDays; k++) {
-        days += '<div class="next-date"></div>';
-        monthDays.innerHTML = days;
+        days += '<div class="next-date">${k}</div>';
+        monthDays.innerHTML = days ;
     }
 };
 
@@ -37,6 +37,7 @@ document.querySelector(".next").addEventListener('click', () => {
     readCalendar();
 });
 readCalendar();
+
 /*
 document.querySelectorAll('.days').forEach(item => {
     item.addEventListener('click', event => {
