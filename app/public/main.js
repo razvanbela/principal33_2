@@ -13,17 +13,17 @@ const readCalendar = () => {
     document.querySelector(".date p").innerHTML = new Date().toDateString();
     let days = "";
     for (let i = firstDayIndex; i > 0; i--) {
-        days += '<div class="prev-date">${prevLastDay-i+1}</div>';
+        days += `<div class="prev-date">${prevLastDay-i+1}</div>`;
     }
     for (let j = 1; j <= lastDay; j++) {
         if (j == new Date().getDate() && date.getMonth() === new Date().getMonth() && date.getFullYear() === new Date().getFullYear()) {
-            days += '<div class="today">${j}</div>';
+            days += `<div data-date=" ${date.getFullYear() + '-' + date.getMonth() +'-'+ j}" class="today">${j}</div>`;
         } else {
-            days += '<div class="days">${j}</div>';
+            days += `<div data-date=" ${date.getFullYear() + '-' + date.getMonth() +'-'+ j}" class="days">${j}</div>`;
         }
     }
     for (let k = 1; k <= nextDays; k++) {
-        days += '<div class="next-date">${k}</div>';
+        days += `<div class="next-date">${k}</div>`;
         monthDays.innerHTML = days ;
     }
 };
@@ -32,15 +32,17 @@ document.querySelector(".prev").addEventListener('click', () => {
     date.setMonth(date.getMonth() - 1);
     readCalendar();
 });
+
 document.querySelector(".next").addEventListener('click', () => {
     date.setMonth(date.getMonth() + 1);
     readCalendar();
 });
+
 readCalendar();
 
-/*
+
 document.querySelectorAll('.days').forEach(item => {
     item.addEventListener('click', event => {
-        alert(event.target.innerText)
+        alert(event.target.innerText);
     })
-});*/
+});

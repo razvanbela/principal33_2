@@ -75,13 +75,22 @@ html{
     align-items: center;
 }
 .days div:hover:not(.today){
-    background: linear-gradient(0deg,#626262,#9bc5c3,#626262);
+    border-radius: 50%;
+    background-color: darkorange;
     cursor: pointer;
 }
 .prev-date, .next-date{
     opacity: 25%;
 }
 .today{
-    border-radius: 2.5rem;
-    background-color: #aaa;
+    border-radius: 50%;
+    background-color: darkorange;
+}
+.reservations{
+    width: 45rem;
+    height: 52rem;
+    background-color: #656565;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

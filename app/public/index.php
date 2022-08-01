@@ -1,7 +1,5 @@
 <?php
-
-$pdo = new PDO('mysql:dbname=tutorial;host=mysql', 'tutorial', 'secret', [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]);
-
+ session_start();
 ?>
 <!doctype html>
 <html lang="en">
@@ -37,7 +35,22 @@ $pdo = new PDO('mysql:dbname=tutorial;host=mysql', 'tutorial', 'secret', [PDO::A
         <div class="days">
         </div>
     </div>
+    <div class="reservations">
+    </div>
+    <!--
+    <div>
+        <form action=""  method="POST">
+            <input type="text" name="name">
+            <input type="email" name="email">
+            <input type="number" name="phone">
+            <input type="date" name="date_start">
+            <input type="date" name="date_end">
 
+
+            <input type="submit" name="submit" value="Reserv">
+        </form>
+    </div>
+    -->
 </div>
 <script src="main.js"></script>
 </body>
