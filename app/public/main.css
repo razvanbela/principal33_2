@@ -102,10 +102,8 @@ html {
 }
 
 .reservation {
-    width: 45rem;
+    width: 30rem;
     height: 52rem;
-    background-color: #626262;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    background-color: #9bc5c3;
+    margin: 3rem;
 }

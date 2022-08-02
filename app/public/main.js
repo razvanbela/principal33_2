@@ -49,19 +49,3 @@ function createDate(year, month, day) {
     }
     return year + "-" + month + "-" + day;
 }
-
-function resDate() {
-    let resDate;
-    document.querySelector('.day').forEach(item => {
-        item.addEventListener('click', () => {
-            resDate = item.getAttribute('data-date');
-            jQuery.ajax({
-                type:"POST",
-                url:'reservation.php',
-                dataType:'json',
-                data:{'resDate':resDateate},
-                success:console.log("It works")
-            })
-        })
-    })
-}
