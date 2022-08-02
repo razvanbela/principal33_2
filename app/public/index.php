@@ -36,8 +36,9 @@
         </div>
         <div class="days">
         </div>
+        </div>
         <div class="reservation">
-            <h3>Reservation</h3>
+            <h1>Reservation</h1>
             <?php
                 include 'reservations.php';
             ?>

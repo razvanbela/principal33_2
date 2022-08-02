@@ -17,9 +17,9 @@ const readCalendar = () => {
     }
     for (let j = 1; j <= lastDay; j++) {
         if (j == new Date().getDate() && date.getMonth() === new Date().getMonth() && date.getFullYear() === new Date().getFullYear()) {
-            days += `<div data-date=" ${createDate(date.getFullYear(), date.getMonth() + 1, j)} " class="today" onclick="">${j}</div>`;
+            days += `<div data-date=" ${createDate(date.getFullYear(), date.getMonth() + 1, j)} " class="today" onclick="resDate()">${j}</div>`;
         } else {
-            days += `<div data-date=" ${createDate(date.getFullYear(), date.getMonth() + 1, j)} "  class="days">${j}</div>`;
+            days += `<div data-date=" ${createDate(date.getFullYear(), date.getMonth() + 1, j)} "  class="days" onclick="resDate()">${j}</div>`;
         }
     }
     for (let k = 1; k <= nextDays; k++) {
@@ -51,15 +51,15 @@ function createDate(year, month, day) {
 }
 
 function resDate() {
-    let date;
+    let resDate;
     document.querySelector('.day').forEach(item => {
         item.addEventListener('click', () => {
-            date = item.getAttribute('data-date');
+            resDate = item.getAttribute('data-date');
             jQuery.ajax({
                 type:"POST",
                 url:'reservation.php',
                 dataType:'json',
-                data:{'date':date},
+                data:{'resDate':resDateate},
                 success:console.log("It works")
             })
         })
