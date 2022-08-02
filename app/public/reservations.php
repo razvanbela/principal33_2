@@ -10,6 +10,11 @@ if(isset($_POST['date'])){
 
   while($row=$res->fetch()) {
       $user=$row['id_users'];
+
+      $sql_u="SELECT id,name,email FROM users WHERE id='".$user."'";
+      $res_u=$pdo->query($sql_u);
+      $row_u=$res_u->fetch();
+      echo $row['name']+$row['data-start'];
   }
 
 }

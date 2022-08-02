@@ -13,18 +13,18 @@ const readCalendar = () => {
     document.querySelector(".date p").innerHTML = new Date().toDateString();
     let days = "";
     for (let i = firstDayIndex; i > 0; i--) {
-        days += `<div class="prev-date">${prevLastDay-i+1}</div>`;
+        days += `<div class="prev-date">${prevLastDay - i + 1}</div>`;
     }
     for (let j = 1; j <= lastDay; j++) {
         if (j == new Date().getDate() && date.getMonth() === new Date().getMonth() && date.getFullYear() === new Date().getFullYear()) {
-            days += `<div data-date=" ${date.getFullYear() + '-' + date.getMonth() +'-'+ j}" class="today">${j}</div>`;
+            days += `<div data-date=" ${createDate(date.getFullYear(), date.getMonth() + 1, j)} " class="today" onclick="">${j}</div>`;
         } else {
-            days += `<div data-date=" ${date.getFullYear() + '-' + date.getMonth() +'-'+ j}" class="days">${j}</div>`;
+            days += `<div data-date=" ${createDate(date.getFullYear(), date.getMonth() + 1, j)} "  class="days">${j}</div>`;
         }
     }
     for (let k = 1; k <= nextDays; k++) {
         days += `<div class="next-date">${k}</div>`;
-        monthDays.innerHTML = days ;
+        monthDays.innerHTML = days;
     }
 };
 
@@ -40,9 +40,28 @@ document.querySelector(".next").addEventListener('click', () => {
 
 readCalendar();
 
+function createDate(year, month, day) {
+    if (month < 10) {
+        month = "0" + month;
+    }
+    if (day < 10) {
+        day = "0" + day;
+    }
+    return year + "-" + month + "-" + day;
+}
 
-document.querySelectorAll('.days').forEach(item => {
-    item.addEventListener('click', event => {
-        alert(event.target.innerText);
+function resDate() {
+    let date;
+    document.querySelector('.day').forEach(item => {
+        item.addEventListener('click', () => {
+            date = item.getAttribute('data-date');
+            jQuery.ajax({
+                type:"POST",
+                url:'reservation.php',
+                dataType:'json',
+                data:{'date':date},
+                success:console.log("It works")
+            })
+        })
     })
-});
+}
