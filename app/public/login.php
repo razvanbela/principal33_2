@@ -8,20 +8,24 @@
     <link rel="stylesheet" href="main.css">
 </head>
 <body>
-<div>
+<div class="center">
     <h1>Login</h1>
-    <form action="" method="POST">
-        <div>
+    <form action="insert_data_login.php" method="POST" enctype="multipart/form-data">
+        <div class="txt_field">
             <input type="email" name="email">
-            <label>Email</label>
+            <span></span>
+             <label>Email</label>
         </div>
-        <div>
+        <div class="txt_field">
             <input type="password" name="password">
+            <span></span>
             <label>Passsword</label>
         </div>
-        <div>
-            <input type="submit" name="submit" value="Login">
+            <input type="submit" value="Login">
+        <div class="signup_link">
+            <a href="signin.php">Sign In</a>
         </div>
+
     </form>
 </div>
 </body>

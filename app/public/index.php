@@ -1,10 +1,11 @@
 <?php
+//xdebug_info();
 session_start();
 ?>
 <!doctype html>
 <html lang="en">
 <?php
-include "reservations.php";
+include "reserv.php";
 ?>
 <head>
     <meta charset="UTF-8">
@@ -42,19 +43,24 @@ include "reservations.php";
         <h1>Reservation</h1>
         <div>
         <form action="" method="POST">
+            <div class="">
             <label for="name">Name</label>
             <input type="text" name="name">
+            </div>
+            <div class="">
             <label for="email">Email</label>
             <input type="email" name="email">
-            <label for="phone">Phone</label>
-            <input type="text" name="phone">
+            </div>
+            <div>
             <label for="date">Data</label>
             <input type="date">
+        </div>
+            <div>
             <label for="location">Location</label>
             <select name="location" id="location">
                 <?php
                 if($_SERVER['REQUEST_METHOD']=='GET'){
-                    $idLocation=isset($_GET['id_location']) ? $_GET['id_location'] : null;
+                  $idLocation=isset($_GET['id_location']) ? $_GET['id_location'] : null;
                     global $pdo;
                     $stmt=$pdo->prepare("SELECT * FROM location");
                         $stmt->execute();
@@ -65,7 +71,10 @@ include "reservations.php";
                         $c++;
                     }
                 }
+
                 ?>
+            </select>
+            </div>
                 <input type="submit" name="submit" value="Reserv">
            </select>
         </form>
