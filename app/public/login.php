@@ -12,18 +12,18 @@
     <h1>Login</h1>
     <form action="insert_data_login.php" method="POST" enctype="multipart/form-data">
         <div class="txt_field">
-            <input type="email" name="email">
+            <input type="text" name="username">
             <span></span>
-             <label>Email</label>
+             <label>Username</label>
         </div>
         <div class="txt_field">
             <input type="password" name="password">
             <span></span>
             <label>Passsword</label>
         </div>
-            <input type="submit" value="Login">
+            <input type="submit" name="login" value="Login">
         <div class="signup_link">
-            <a href="signin.php">Sign In</a>
+            <a href="signup.php">Sign Up</a>
         </div>
 
     </form>
