@@ -1,27 +1,39 @@
 <?php
-session_start();
+
 $pdo = new PDO('mysql:dbname=tutorial;host=mysql', 'tutorial', 'secret', [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]);
 
-$passHash=password_hash($_POST['password'],PASSWORD_BCRYPT);
+$username = $_POST['username'];
+$password = $_POST['password'];
 
-if (isset($_POST["login"])) {
-    if (empty($_POST['username']) || empty($_POST['password'])) {
-        echo 'All fields are required';
-    } else{
-        $query = "SELECT * FROM users WHERE username= :username AND password= :password ";
-        $stmt = $pdo->prepare($query);
-        $stmt->execute(
-            array(
-                'username' => $_POST['username'],
-                'password' => $_POST['password']
-            )
-        );
-        if(password_verify($_POST['password'],$passHash)){
-            header('location:index.php');
-        }else{
-            echo 'Bad password';
+$sql = "SELECT * FROM users WHERE username= '.$username.' ";
+
+if ($res = $pdo->query($sql)) {
+    if ($res->rowCount() > 0) {
+        while ($row = $res->fetch()) {
+            session_start();
+            $_SESSION['logat'] = 'logat';
+            $_SESSION['username'] = $row['username'];
+            $_SESSION['password'] = $row['password'];
+            session_write_close();
+
+            $passHash = $row['password'];
+            if (password_verify($_POST['password'], $passHash)) {
+                loggedCheck();
+            } else {
+                echo 'Bad password';
+            }
         }
     }
+}
+function loggedCheck()
+{
+    if (!isset($_SESSION['logat']) && $_SESSION['logat'] != 'logat') {
+        echo '<div>' . $_SESSION['username'] . ' is logged</div>';
+        header('location:index.php');
+    } else {
+        echo 'Nobody is logged in';
+    }
+
 }
 
 

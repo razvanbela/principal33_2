@@ -17,9 +17,9 @@ const readCalendar = () => {
     }
     for (let j = 1; j <= lastDay; j++) {
         if (j === new Date().getDate() && date.getMonth() === new Date().getMonth() && date.getFullYear() === new Date().getFullYear()) {
-            days += `<div data-date=" ${createDate(date.getFullYear(), date.getMonth() + 1, j)} " class="today">${j}</div>`;
+            days += `<div data-date=" ${createDate(date.getFullYear(), date.getMonth() + 1, j)} " class="today" onclick="getDate()">${j}</div>`;
         } else {
-            days += `<div data-date=" ${createDate(date.getFullYear(), date.getMonth() + 1, j)} "  class="days">${j}</div>`;
+            days += `<div data-date=" ${createDate(date.getFullYear(), date.getMonth() + 1, j)} "  class="days" onclick="getDate()">${j}</div>`;
         }
     }
     for (let k = 1; k <= nextDays; k++) {
@@ -46,4 +46,21 @@ function createDate(year, month, day) {
         day = "0" + day;
     }
     return year + "-" + month + "-" + day;
+}
+
+let reservDate=createDate(date.getFullYear(),date.getMonth()+1,date.getDay())
+
+function getDate(){
+    document.querySelector('.days').forEach(item => {
+        item.addEventListener('click', () =>{
+            reservDate=item.getAttribute('data-date');
+
+            let params= new URLSearchParams();
+            params.append('reservDate',reservDate);
+            console.log(params);
+            axios.post('/reserv.php',params).then(response => {
+                console.log(response);
+            });
+        })
+    });
 }

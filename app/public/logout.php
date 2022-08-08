@@ -1,4 +1,8 @@
 <?php
 session_start();
 session_destroy();
-header('location:index.php');
+if(isset($_SESSION['id_user'])) {
+    header('location:login.php');
+}else{
+    echo 'Eroare LOGOUT';
+}

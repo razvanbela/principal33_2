@@ -1,7 +1,5 @@
 <?php
-
-//session_start();
-//xdebug_info();
+session_start();
 ?>
 <!doctype html>
 <html lang="en">
@@ -13,7 +11,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Calendar</title>
     <link href="main.css" rel="stylesheet">
-
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 </head>
 
 <body>
@@ -42,31 +40,17 @@
     <div class="reservation">
         <h1>Reservation</h1>
         <div>
-            <form action="" method="POST">
-                <div>
-                    <label for="location">Location</label>
-                    <select name="location" id="location">
-                        <?php
-
-                        //if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-                        //    $idLocation = isset($_GET['id_location']) ? $_GET['id_location'] : null;
-                        //    global $pdo;
-                        //    $stmt = $pdo->prepare("SELECT * FROM location");
-                        //    $stmt->execute();
-                        //    $stmt->setFetchMode(PDO::FETCH_ASSOC);
-                        //    $c = 1;
-                        //    while ($row = $stmt->fetch()) {
-                        //        echo "<option value=\"$c\">$row[adress]</option> ";
-                        //        $c++;
-                        //    }
-                        //}
-                        ?>
-                    </select>
-                </div>
-                <input type="submit" name="reserv" value="Reserv">
-                </select>
-            </form>
+            <?php
+            include "reserv.php";
+            ?>
         </div>
+
+    </div>
+    <div>
+        <?php
+        include "insert_data_login.php";
+        echo '<a href="logout.php">LOGOUT</a>';
+        ?>
 
     </div>
 </div>
